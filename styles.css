@@ -1,0 +1,30 @@
+#scrollToTop {
+    transition: display 0.3s;
+}
+
+.table-dark, card, card-body {
+    background-color: #343a40;
+}
+
+/* 使表格可左右滑動 */
+.table-responsive {
+    overflow-x: auto; /* 允許左右滾動 */
+}
+
+/* 防止中文字換行並強制橫向顯示 */
+td, th {
+    writing-mode: horizontal-tb; /* 強制橫向排列 */
+    text-align: left; /* 左對齊 */
+}
+
+.nowrap{
+    white-space: nowrap; /* 不換行 */
+}
+
+#search-form {
+    margin-left: auto; /* 讓搜尋框靠右排列 */
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}

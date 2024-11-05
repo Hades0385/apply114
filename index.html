@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="https://avatars.githubusercontent.com/u/70755374" type="image/x-icon" />
+        <title>大學繁星簡章</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body class="bg-dark text-light"> 
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: rgba(0, 0, 0, 0.205);">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">大學申請簡章</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav dropdown">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                學校名單
+                            </a>
+                            <ul class="dropdown-menu overflow-auto" id="index-list" aria-labelledby="navbarDropdown" style="max-height: 300px;">
+                                <li><a class="dropdown-item" href="#" id="default-option">請選擇</a></li>
+                                <!--學校名單插入於此-->
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-auto" role="search" id="search-form">
+                        <input class="form-control me-2" type="search" placeholder="搜尋校名或校系" aria-label="搜尋" id="search-input">
+                        <button class="btn btn-outline-light" type="submit">search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+            <div class="card border-warning">
+                <div class="card-header bg-warning">
+                    <strong>請詳閱!!!!!</strong>
+                </div>
+                <div class="card-body bg-dark">
+                    <a style="color: white;">
+                        1.此網站部分程式碼由AI生成,尚未檢驗其運行是否正常,可能遇到錯誤<br>
+                        2.此網站資料僅供參考,最新資料以大學入學委員會為主,此網站資料更新時間2024/11/5<br>
+                        3.此網頁未對行動裝置進行最佳化適應性設計,建議使用電腦瀏覽獲得最佳體驗<br>
+                        4.可過選單選取學校來及搜尋科系或校名查詢,點選校系代碼可連結至原始網站<br>
+                        5.若遇到錯誤請透過(hexxyz01@duck.com)來連繫我
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive" id="table-data">
+                <!--簡章資料置於此-->
+            </div>
+        </div>
+        <a href="#" id="scrollToTop" class="btn btn-primary" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+            回到頂端
+        </a>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

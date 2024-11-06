@@ -18,6 +18,15 @@ $(document).ready(function() {
         alert('無法讀取資料，請確認 JSON 檔案是否正確。');
     });
 
+    let applyData = [];
+
+    $.getJSON('applyData.json', function(data) {
+        applyData = data['Data'];
+    }).fail(function() {
+        alert('無法讀取 applyData.json，請確認檔案是否正確。');
+    });
+
+
     // 當使用者選擇學校後，載入該學校的資料
     $(document).on('click', '#index-list .dropdown-item', function(event) {
         event.preventDefault(); // 防止跳轉
@@ -41,8 +50,12 @@ $(document).ready(function() {
     function renderTable(data) {
         const tableBody = $('#table-data');
         tableBody.empty(); // 清空現有資料
-
+        
         data.forEach(item => {
+            
+            const applyItem = applyData.find(apply => apply['校系代碼'] === item['校系代碼']);
+            const 篩選資料 = applyItem ? applyItem['篩選資料'] : 'ND';  // 如果找不到，顯示 ND
+        
             const row = `
                 <table class="table table-bordered table-dark">
                 <tr><!--標題欄位-->
@@ -100,6 +113,10 @@ $(document).ready(function() {
                     <td>${item.榜示}</td>
                     <td colspan="2" class="text-center align-middle nowrap">說明</td>
                     <td colspan="8">${item.說明}</td>
+                </tr>
+                <tr><!--第九橫列-->
+                    <td class="nowrap" colspan="2">113最低率取標準</td>
+                    <td colspan="10">${篩選資料}</td>
                 </tr>
             </table>
             

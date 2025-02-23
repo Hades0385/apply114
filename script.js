@@ -26,6 +26,24 @@ $(document).ready(function() {
         alert('無法讀取 applyData.json，請確認檔案是否正確。');
     });
 
+    // 確保 Fuse.js 已載入
+    console.log("Fuse 是否存在:", typeof Fuse);
+
+    // 初始化 Fuse.js
+    let fuse;
+    function initFuse() {
+        if (universityData.length > 0) {
+            fuse = new Fuse(universityData, {
+                keys: ['校名', '校系'],
+                threshold: 0.3 // 控制匹配精確度
+            });
+        }
+    }
+
+    // 監聽資料加載完成後初始化 Fuse.js
+    $(document).ajaxStop(function() {
+        initFuse();
+    });
 
     // 當使用者選擇學校後，載入該學校的資料
     $(document).on('click', '#index-list .dropdown-item', function(event) {
@@ -125,20 +143,21 @@ $(document).ready(function() {
         });
     }
 
-    // 搜尋功能
+    // 使用 Fuse.js 進行模糊搜尋
     $('#search-form').submit(function(event) {
         event.preventDefault(); // 防止表單默認提交行為
-        const searchTerm = $('#search-input').val().trim().toLowerCase();
+        const searchTerm = $('#search-input').val().trim();
 
         if (searchTerm === '') {
             $('#navbarDropdown').text("學校名單"); 
             $('#table-data').empty();  
         } else {
-            const filteredData = universityData.filter(item =>
-                item.校名.toLowerCase().includes(searchTerm) || 
-                item.校系.toLowerCase().includes(searchTerm)
-            );
-            renderTable(filteredData); // 渲染搜尋結果
+            if (fuse) {
+                const result = fuse.search(searchTerm).map(res => res.item);
+                renderTable(result);
+            } else {
+                alert("搜尋功能初始化失敗，請確認資料是否正確加載。");
+            }
         }
     });
 
